@@ -1,2 +1,2 @@
 # Green Team HIMA Implementation
-## Andrew Raleigh, Jacob Downs... (add your names)
+## Andrew Raleigh, Jacob Downs, Diane Tam... (add your names)
