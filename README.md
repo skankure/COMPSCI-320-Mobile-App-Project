@@ -1,2 +1,2 @@
 # Green Team HIMA Implementation
-## Andrew Raleigh, Jacob Downs... (add your names)
+## Andrew Raleigh, Jacob Downs, Pandi Rrapo (add your names)
