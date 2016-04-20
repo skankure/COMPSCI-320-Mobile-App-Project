@@ -18,6 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Perform1"
+            android:label="@string/title_activity_perform1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Perform2"
+            android:label="@string/title_activity_perform2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Perform3"
+            android:label="@string/title_activity_perform3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
