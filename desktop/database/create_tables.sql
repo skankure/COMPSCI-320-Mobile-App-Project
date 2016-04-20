@@ -20,9 +20,9 @@ CREATE TABLE inspection (
   iid INTEGER PRIMARY KEY,
   inspector           VARCHAR(70),
   notes               VARCHAR(255),
-  date                TIMESTAMP, -- This or use DATE?
-  start_time          TIMESTAMP, -- This or use TIME?
-  end_time            TIMESTAMP, -- This or use TIME?
+  date                DATETIME,
+  start_time          DATETIME,
+  end_time            DATETIME,
   type                CHARACTER(1),
   prev_date           VARCHAR(10), -- This or use TIMESTAMP or DATE?
   pic                 VARCHAR(70),
@@ -32,7 +32,7 @@ CREATE TABLE inspection (
   correction_required BOOLEAN,
   correction          VARCHAR(255),
   re_required         BOOLEAN,
-  re_date             TIMESTAMP
+  re_date             DATETIME
 );
 
 -- Violation
@@ -42,13 +42,13 @@ CREATE TABLE violation (
   code_ref      VARCHAR(30), -- No idea how long this should be
   desc          VARCHAR(255),
   src           CHARACTER(1),
-  date_verified TIMESTAMP
+  date_verified DATETIME
 );
 
 -- Picture
 CREATE TABLE picture (
   pid       INTEGER PRIMARY KEY,
-  timestamp TIMESTAMP,
+  timestamp DATETIME,
   desc      VARCHAR(255)
 );
 
@@ -58,5 +58,5 @@ CREATE TABLE user (
   pass        BINARY(64), -- Stores hash of password
   name        VARCHAR(70),
   priv        VARCHAR(30), -- Need to determine what datatype
-  last_active TIMESTAMP
+  last_active DATETIME
 );
