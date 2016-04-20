@@ -8,9 +8,9 @@ CREATE TABLE food_establishment (
   address           VARCHAR(95),
   zipcode           VARCHAR(10),
   date_est          VARCHAR(10),
-  type              VARCHAR(30), -- No idea how long this should be
+  type              VARCHAR(255),
   total_violations  INTEGER,
-  risk_level        VARCHAR(30), -- No idea how long this should be
+  risk_level        VARCHAR(10),
   total_inspections INTEGER,
   owner             VARCHAR(70)
 );
@@ -24,7 +24,7 @@ CREATE TABLE inspection (
   start_time          DATETIME,
   end_time            DATETIME,
   type                CHARACTER(1),
-  prev_date           VARCHAR(10), -- This or use TIMESTAMP or DATE?
+  prev_date           DATETIME,
   pic                 VARCHAR(70),
   total_violation     INTEGER,
   result              CHARACTER(1),
@@ -39,7 +39,7 @@ CREATE TABLE inspection (
 CREATE TABLE violation (
   vid INTEGER PRIMARY KEY,
   crit_flag     CHARACTER(1),
-  code_ref      VARCHAR(30), -- No idea how long this should be
+  code_ref      VARCHAR(255),
   desc          VARCHAR(255),
   src           CHARACTER(1),
   date_verified DATETIME
@@ -57,6 +57,6 @@ CREATE TABLE user (
   user        VARCHAR(30),
   pass        BINARY(64), -- Stores hash of password
   name        VARCHAR(70),
-  priv        VARCHAR(30), -- Need to determine what datatype
+  priv        VARCHAR(10),
   last_active DATETIME
 );
