@@ -41,8 +41,7 @@ CREATE TABLE violation (
   crit_flag     CHARACTER(1),
   code_ref      VARCHAR(255),
   desc          VARCHAR(255),
-  src           CHARACTER(1),
-  date_verified DATETIME
+  src           CHARACTER(1)
 );
 
 -- Picture
