@@ -12,21 +12,14 @@ INSERT INTO inspection VALUES(3, "Steve Inspector", "The past issue has been res
 INSERT INTO inspection VALUES (4, "Andrew Raleigh", "Everything checks out.", '2016-04-30', '2016-04-30 9:32:02', '2016-04-30 11:12:02', "O", null,
                               "Paul Cho", 0, "P", 0, null, 0, null);
 
---@TODO: IID2, IID3 correspond to RID 10.
 UPDATE food_establishment SET total_inspections=2 WHERE rid=10;
 UPDATE food_establishment SET total_violations=1 WHERE rid=10;
-
---@TODO: II1 correspond to RID4.
 UPDATE food_establishment SET total_inspections=1 WHERE rid=4;
-
---@TODO: IID4 correspond to RID8.
 UPDATE food_establishment SET total_inspections=1 WHERE rid=8;
 
---@TODO: Link all inspections with a Restaurant.
-INSERT INTO inspectionfor VALUES(4, 1);
-INSERT INTO inspectionfor VALUES(10, 2);
-INSERT INTO inspectionfor VALUES(10, 3);
-INSERT INTO inspectionfor VALUES(8, 4);
+INSERT INTO insp_to_est VALUES(4, 1);
+INSERT INTO insp_to_est VALUES(10, 2);
+INSERT INTO insp_to_est VALUES(10, 3);
+INSERT INTO insp_to_est VALUES(8, 4);
 
---@TODO: Violation 0 correspond to Inspection IID2. Do we need date verified??
-INSERT INTO violationfor VALUES(2, 0);
+INSERT INTO vio_to_insp VALUES(2, 0);

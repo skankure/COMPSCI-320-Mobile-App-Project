@@ -1,19 +1,21 @@
--- Create relation tables
--- TODO:
--- Change table names to something more appropiate?
-CREATE TABLE inspectionfor (
-	rid FOREIGN KEY REFERENCES food_establishment,
-	iid FOREIGN KEY REFERENCES inspection
+-- Create relation tables.
+CREATE TABLE insp_to_est (
+  rid INTEGER ,
+  iid INTEGER,
+  FOREIGN KEY(rid) REFERENCES food_establishment(rid),
+  FOREIGN KEY(iid) REFERENCES inspection(iid)
 );
 
--- Do we need date verified?
-CREATE TABLE violationfor (
-	iid FOREIGN KEY REFERENCES inspection,
-	vid FOREIGN KEY REFERENCES violation,
-	date_verified DATETIME
+CREATE TABLE vio_to_insp (
+  iid INTEGER ,
+  vid INTEGER,
+  FOREIGN KEY(iid) REFERENCES inspection(iid),
+  FOREIGN KEY(vid) REFERENCES violation(vid)
 );
 
 CREATE TABLE picturelink (
-	vid FOREIGN KEY REFERENCES violation,
-	pid FOREIGN KEY REFERENCES picture
+  vid INTEGER ,
+  pid INTEGER,
+  FOREIGN KEY(vid) REFERENCES violation(vid),
+  FOREIGN KEY(pid) REFERENCES picture(pid)
 );
