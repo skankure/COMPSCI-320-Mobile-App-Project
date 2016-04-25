@@ -1,0 +1,157 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
+
+public class GUI {
+
+	private JFrame frame;
+	private JPanel landingFrame, searchFrame, syncFrame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUI window = new GUI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public GUI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 1069, 738);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		
+		landingFrame = new JPanel();
+		frame.getContentPane().add(landingFrame, "name_383423057927825");
+		landingFrame.setLayout(null);
+		//set visible
+		landingFrame.setVisible(true);
+		
+		JLabel lblHima = new JLabel("H.I.M.A.");
+		lblHima.setFont(new Font("Tahoma", Font.PLAIN, 98));
+		lblHima.setBounds(350, 45, 358, 169);
+		landingFrame.add(lblHima);
+		
+		JLabel lblHealthInspectionMobile = new JLabel("Health Inspection Mobile Application");
+		lblHealthInspectionMobile.setFont(new Font("Tahoma", Font.PLAIN, 46));
+		lblHealthInspectionMobile.setBounds(152, 203, 750, 82);
+		landingFrame.add(lblHealthInspectionMobile);
+		
+		JButton btnNewButton = new JButton("Search Inspections");
+		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 56));
+		btnNewButton.setBounds(229, 326, 596, 134);
+		landingFrame.add(btnNewButton);
+		
+		JButton btnSync = new JButton("Sync");
+		btnSync.setFont(new Font("SansSerif", Font.PLAIN, 56));
+		btnSync.setBounds(229, 518, 596, 134);
+		landingFrame.add(btnSync);
+		
+		JButton btnNewButton_1 = new JButton("Logout");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(872, 45, 118, 69);
+		landingFrame.add(btnNewButton_1);
+		
+		searchFrame = new JPanel();
+		frame.getContentPane().add(searchFrame, "name_383437413698620");
+		searchFrame.setLayout(null);
+		//set visible
+		searchFrame.setVisible(false);
+		
+		JLabel lblRestaurant = new JLabel("Restaurant");
+		lblRestaurant.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblRestaurant.setBounds(59, 27, 443, 59);
+		searchFrame.add(lblRestaurant);
+		
+		JButton btnNewButton_2 = new JButton("Search");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		btnNewButton_2.setBounds(113, 570, 558, 73);
+		searchFrame.add(btnNewButton_2);
+		
+		JCheckBox chckbxCritical = new JCheckBox("Critical");
+		chckbxCritical.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		chckbxCritical.setBounds(727, 577, 225, 59);
+		searchFrame.add(chckbxCritical);
+		
+		JLabel lblDate = new JLabel("Date");
+		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblDate.setBounds(59, 285, 443, 59);
+		searchFrame.add(lblDate);
+		
+		JLabel lblViolation = new JLabel("Violation");
+		lblViolation.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblViolation.setBounds(543, 285, 443, 59);
+		searchFrame.add(lblViolation);
+		
+		JLabel lblInspector = new JLabel("Inspector");
+		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblInspector.setBounds(543, 27, 443, 59);
+		searchFrame.add(lblInspector);
+		
+		JTextArea txtrMcdonalds = new JTextArea();
+		txtrMcdonalds.setText("McDonalds\r\nWendy's\r\nRoots Cafe\r\nWorcester Dining Common\r\nRoute 9 Diner");
+		txtrMcdonalds.setBounds(69, 99, 391, 158);
+		searchFrame.add(txtrMcdonalds);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setText("1/15/15\r\n2/25/15\r\n8/8/15\r\n2/1/16\r\n4/10/16");
+		textArea.setBounds(69, 357, 391, 158);
+		searchFrame.add(textArea);
+		
+		JTextArea txtrSteveSteveNot = new JTextArea();
+		txtrSteveSteveNot.setText("Steve\r\nSteve\r\nNot Steve\r\nSteve\r\nSteve");
+		txtrSteveSteveNot.setBounds(543, 99, 391, 158);
+		searchFrame.add(txtrSteveSteveNot);
+		
+		JTextArea txtrSmellyPotatoesBirds = new JTextArea();
+		txtrSmellyPotatoesBirds.setText("Smelly Potatoes\r\nBirds Living in Bread Droor\r\nGreen Mac and Cheese where there should be no green mac and cheese\r\nManager didn't wear deoderant and has terrible odor\r\nRat poop. Rat poop everywhere");
+		txtrSmellyPotatoesBirds.setBounds(543, 357, 391, 158);
+		searchFrame.add(txtrSmellyPotatoesBirds);
+		
+		syncFrame = new JPanel();
+		frame.getContentPane().add(syncFrame, "name_383440436424780");
+		syncFrame.setLayout(null);
+		//set visible
+		syncFrame.setVisible(false);
+		
+		JLabel lblSyncingToMobile = new JLabel("Syncing to Mobile Device");
+		lblSyncingToMobile.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		lblSyncingToMobile.setBounds(153, 119, 866, 336);
+		syncFrame.add(lblSyncingToMobile);
+		
+		JLabel label = new JLabel("...");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 96));
+		label.setBounds(475, 395, 338, 96);
+		syncFrame.add(label);
+	}
+}
