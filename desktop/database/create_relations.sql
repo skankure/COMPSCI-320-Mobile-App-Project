@@ -6,6 +6,7 @@ CREATE TABLE inspectionfor (
 	iid FOREIGN KEY REFERENCES inspection
 );
 
+-- Do we need date verified?
 CREATE TABLE violationfor (
 	iid FOREIGN KEY REFERENCES inspection,
 	vid FOREIGN KEY REFERENCES violation,
