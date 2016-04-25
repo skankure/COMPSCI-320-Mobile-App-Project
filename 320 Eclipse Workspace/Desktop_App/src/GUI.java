@@ -11,16 +11,19 @@ import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
 public class GUI {
 
 	private JFrame frame;
-	private JPanel landingFrame, searchFrame, syncFrame, resultsFrame;
+	private JPanel landingFrame, searchFrame, syncFrame, resultsFrame, loginFrame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField txtRestaurant;
+	private JTextField txtfldLoginUsername;
+	private JPasswordField passwordFieldLogin;
 
 	/**
 	 * Launch the application.
@@ -59,7 +62,7 @@ public class GUI {
 		frame.getContentPane().add(landingFrame, "name_383423057927825");
 		landingFrame.setLayout(null);
 		//set visible
-		landingFrame.setVisible(true);
+		landingFrame.setVisible(false);
 		
 		searchFrame = new JPanel();
 		frame.getContentPane().add(searchFrame, "name_383437413698620");
@@ -78,6 +81,12 @@ public class GUI {
 		resultsFrame.setLayout(null);
 		//set visible
 		syncFrame.setVisible(false);
+		
+		loginFrame = new JPanel();
+		frame.getContentPane().add(loginFrame, "name_13525621333437");
+		loginFrame.setLayout(null);
+		//set visible
+		loginFrame.setVisible(true);
 		
 		JLabel lblHima = new JLabel("H.I.M.A.");
 		lblHima.setFont(new Font("Tahoma", Font.PLAIN, 98));
@@ -116,8 +125,12 @@ public class GUI {
 		landingFrame.add(btnLandingSync);
 		
 		JButton btnLandingLogout = new JButton("Logout");
-		btnLandingLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnLandingLogout.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				loginFrame.setVisible(true);
+				landingFrame.setVisible(false);
 			}
 		});
 		btnLandingLogout.setBounds(872, 45, 118, 69);
@@ -177,7 +190,7 @@ public class GUI {
 		searchFrame.add(txtrSteveSteveNot);
 		
 		JTextArea txtrSmellyPotatoesBirds = new JTextArea();
-		txtrSmellyPotatoesBirds.setText("Smelly Potatoes\r\nBirds Living in Bread Droor\r\nGreen Mac and Cheese where there should be no green mac and cheese\r\nManager didn't wear deoderant and has terrible odor\r\nRat poop. Rat poop everywhere");
+		txtrSmellyPotatoesBirds.setText("Smelly Potatoes\r\nBirds living in bread drawer\r\nGreen mac n' cheese\r\nManager didn't wear deoderant: terrible odor\r\nRat poop. Rat poop everywhere");
 		txtrSmellyPotatoesBirds.setBounds(543, 357, 391, 158);
 		searchFrame.add(txtrSmellyPotatoesBirds);
 		
@@ -267,13 +280,13 @@ public class GUI {
 		resultsFrame.add(lblResultsMatching);
 		
 		JTextArea txtrRootsCafe = new JTextArea();
-		txtrRootsCafe.setText("Roots Cafe       Steve        1/19/13     Stinky Stuff\r\nRoots Cafe       Steve        5/28/14     Rabid guinea pig loose fries\r\nRoots Cafe       Steve        9/14/15     Manager left his hairnet in the break room\r\nRoots Cafe       Steve        2/8/16      Emloyee didn't wash hands");
-		txtrRootsCafe.setBounds(163, 234, 695, 362);
+		txtrRootsCafe.setText("Roots Cafe       Steve        1/19/13     Stinky Stuff\r\n\r\nRoots Cafe       Steve        5/28/14     Rabid guinea pig loose in fries\r\n\r\nRoots Cafe       Steve        9/14/15     Manager left his hairnet in the break room\r\n\r\nRoots Cafe       Steve        2/8/16      Emloyee didn't wash hands");
+		txtrRootsCafe.setBounds(90, 234, 692, 362);
 		resultsFrame.add(txtrRootsCafe);
 		
 		txtRestaurant = new JTextField();
 		txtRestaurant.setText("Restaurant\t             Inspector             Date                 Violation");
-		txtRestaurant.setBounds(163, 213, 527, 22);
+		txtRestaurant.setBounds(90, 211, 692, 22);
 		resultsFrame.add(txtRestaurant);
 		txtRestaurant.setColumns(10);
 		
@@ -289,5 +302,59 @@ public class GUI {
 		btnResultsReturn.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		btnResultsReturn.setBounds(365, 609, 269, 54);
 		resultsFrame.add(btnResultsReturn);
+		
+		JButton btnDownloadPdf = new JButton("Download PDF");
+		btnDownloadPdf.setBounds(794, 233, 131, 25);
+		resultsFrame.add(btnDownloadPdf);
+		
+		JButton button = new JButton("Download PDF");
+		button.setBounds(794, 271, 131, 25);
+		resultsFrame.add(button);
+		
+		JButton button_1 = new JButton("Download PDF");
+		button_1.setBounds(794, 309, 131, 25);
+		resultsFrame.add(button_1);
+		
+		JButton button_2 = new JButton("Download PDF");
+		button_2.setBounds(794, 347, 131, 25);
+		resultsFrame.add(button_2);
+		
+		JLabel lblLoginHimaTitle = new JLabel("H.I.M.A. Login");
+		lblLoginHimaTitle.setFont(new Font("Tahoma", Font.PLAIN, 64));
+		lblLoginHimaTitle.setBounds(303, 48, 429, 163);
+		loginFrame.add(lblLoginHimaTitle);
+		
+		JLabel lblLoginUsername = new JLabel("Username");
+		lblLoginUsername.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblLoginUsername.setBounds(303, 237, 134, 53);
+		loginFrame.add(lblLoginUsername);
+		
+		txtfldLoginUsername = new JTextField();
+		txtfldLoginUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtfldLoginUsername.setBounds(303, 303, 394, 45);
+		loginFrame.add(txtfldLoginUsername);
+		txtfldLoginUsername.setColumns(10);
+		
+		JLabel lblLoginPassword = new JLabel("Password");
+		lblLoginPassword.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblLoginPassword.setBounds(303, 385, 134, 53);
+		loginFrame.add(lblLoginPassword);
+		
+		passwordFieldLogin = new JPasswordField();
+		passwordFieldLogin.setBounds(313, 451, 380, 45);
+		loginFrame.add(passwordFieldLogin);
+		
+		JButton btnLoginLogin = new JButton("Login");
+		btnLoginLogin.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				loginFrame.setVisible(false);
+				landingFrame.setVisible(true);
+			}
+		});
+		btnLoginLogin.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		btnLoginLogin.setBounds(382, 563, 250, 62);
+		loginFrame.add(btnLoginLogin);
 	}
 }
