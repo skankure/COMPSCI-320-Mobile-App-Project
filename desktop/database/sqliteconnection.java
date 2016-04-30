@@ -1,18 +1,31 @@
 import java.sql.*;
 
-public class sqliteconnection {
+public class SqliteConnection {
 
     Connection conn = null;
 
-    public static Connection dbConnect(){
-
+    public static Statement dbConnect() throws ClassNotFoundException{
+    	
+    	Class.forName("org.sqlite.JDBC");
+    	
+    	// Phase 1: Create connection to database
+    	Connection conn = null;
         try {
-            Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/Andrew/Desktop/HIMA/CS320/desktop/database/database.db");
-            return conn;
-        } catch {
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+        } catch(SQLException e) {
             System.out.println("Error connecting to SQLite Database!");
             return null;
         }
+        
+        // Phase 2: Create statement to run queries on
+        Statement query = null;
+        try {
+			query = conn.createStatement();
+			return query;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
     }
 }
