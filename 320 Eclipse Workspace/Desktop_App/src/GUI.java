@@ -143,7 +143,7 @@ public class GUI {
 				try
 					{
 						//Populate Date Table
-						String query2="SELECT DISTINCT i.date FROM inspection i; (Format YYYY-MM-DD HH:MM:SS)";
+						String query2="SELECT DISTINCT i.date FROM inspection i;";
 						PreparedStatement pst2=connection.prepareStatement(query2);
 						ResultSet rs2 = pst2.executeQuery();
 						tableDate.setModel(DbUtils.resultSetToTableModel(rs2));
@@ -161,7 +161,7 @@ public class GUI {
 				try
 					{
 						//Populate Inspector Table
-						String query3="SELECT f.name FROM food_establishment f";
+						String query3="SELECT DISTINCT i.inspector FROM inspection i;";
 						PreparedStatement pst3=connection.prepareStatement(query3);
 						ResultSet rs3 = pst3.executeQuery();
 						tableInspector.setModel(DbUtils.resultSetToTableModel(rs3));
@@ -179,7 +179,7 @@ public class GUI {
 				try
 					{
 						//Populate Violation Table
-						String query4="SELECT f.name FROM food_establishment f";
+						String query4="SELECT DISTINCT v.desc FROM violation v;";
 						PreparedStatement pst4=connection.prepareStatement(query4);
 						ResultSet rs4 = pst4.executeQuery();
 						tableViolation.setModel(DbUtils.resultSetToTableModel(rs4));
@@ -239,7 +239,7 @@ public class GUI {
 				try
 				{
 					//Populate Results Table
-					String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f";
+					String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f, inspection i, violation v";
 					PreparedStatement pst=connection.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
 					tableViolation.setModel(DbUtils.resultSetToTableModel(rs));
@@ -501,19 +501,19 @@ public class GUI {
 		resultsFrame.add(button_2);
 		
 		JButton btnEmail1 = new JButton("Email");
-		btnEmail1.setBounds(937, 233, 63, 25);
+		btnEmail1.setBounds(937, 233, 73, 25);
 		resultsFrame.add(btnEmail1);
 		
 		JButton buttonEmail2 = new JButton("Email");
-		buttonEmail2.setBounds(937, 271, 63, 25);
+		buttonEmail2.setBounds(937, 271, 73, 25);
 		resultsFrame.add(buttonEmail2);
 		
 		JButton buttonEmail3 = new JButton("Email");
-		buttonEmail3.setBounds(937, 309, 63, 25);
+		buttonEmail3.setBounds(937, 309, 73, 25);
 		resultsFrame.add(buttonEmail3);
 		
 		JButton buttonEmail4 = new JButton("Email");
-		buttonEmail4.setBounds(937, 347, 63, 25);
+		buttonEmail4.setBounds(937, 347, 73, 25);
 		resultsFrame.add(buttonEmail4);
 		
 		scrollPaneResults = new JScrollPane();
