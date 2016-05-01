@@ -1,8 +1,6 @@
 #CS 320 Software Engineering
 Green Team HIMA Application
 ##Members:
-
-
 - Andrew Raleigh
 - Jacob Downs
 - Diane Tam
@@ -12,5 +10,25 @@ Green Team HIMA Application
 - Jianyi Huang
 
 
-##Application Description:
-Hima stands for Health Inspector Mobile Application.
+##Background Information:
+lorem ipsum
+
+##Architecture:
+lorem ipsum
+
+
+##Android Application:
+lorem ipsum
+
+
+##Desktop Application:
+lorem ipsum
+
+##Database:
+lorem ipsum
+
+##Exsisting Issues:
+lorem ipsum 
+
+##Future Functionality:
+lorem ipsum
