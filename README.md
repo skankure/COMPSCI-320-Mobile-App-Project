@@ -4,6 +4,6 @@
 ####Andrew Raleigh
 ####Jacob Downs
 #### Diane Tam
-####Supriya P Kankure
+####Supriya Kankure
 ####Paul Cho
 ####Pandi Rrapo
