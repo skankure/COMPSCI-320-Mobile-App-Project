@@ -1,3 +1,9 @@
-# CS 320 Umass Amherst Software Engineering
+# CS 320 Software Engineering
 ## Green Team HIMA Application
-### Andrew Raleigh, Jacob Downs, Diane Tam, Supriya P Kankure, Paul Cho, Pandi Rrapo (add your names)
+### Members:
+####Andrew Raleigh
+####Jacob Downs
+#### Diane Tam
+####Supriya P Kankure
+####Paul Cho
+####Pandi Rrapo
