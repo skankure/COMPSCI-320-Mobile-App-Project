@@ -27,8 +27,8 @@ lorem ipsum
 ##Database:
 lorem ipsum
 
-##Exsisting Issues:
-lorem ipsum 
+##Existing Issues:
+lorem ipsum
 
 ##Future Functionality:
 lorem ipsum
