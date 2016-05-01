@@ -11,7 +11,10 @@ Green Team HIMA Application
 
 
 ##Background Information:
-lorem ipsum
+Our software engineering project was to create a system that would allow a health inspector to conduct and perform health inspections
+for food establishments efficiently and digitally. Currently, the health inspector manually inputs data from health inspections on paper,
+and would like a system where he can perform inspections via tablet, be able to print inspections real time, and view inspection data via
+desktop.
 
 ##Architecture:
 lorem ipsum
