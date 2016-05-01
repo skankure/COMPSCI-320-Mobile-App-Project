@@ -32,7 +32,6 @@ public class GUI {
 	private JTextField textFieldDate;
 	private JTextField textFieldInspector;
 	private JTextField textFieldViolation;
-	private JTextField txtRestaurant;
 	private JTextField txtfldLoginUsername;
 	private JPasswordField passwordFieldLogin;
 	private JTable tableEstablishment, tableDate, tableViolation, tableInspector, tableResults;
@@ -73,7 +72,7 @@ public class GUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1069, 738);
+		frame.setBounds(100, 100, 1900, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -110,12 +109,12 @@ public class GUI {
 		
 		JLabel lblHima = new JLabel("H.I.M.A.");
 		lblHima.setFont(new Font("Tahoma", Font.PLAIN, 98));
-		lblHima.setBounds(350, 45, 358, 169);
+		lblHima.setBounds(761, 45, 358, 169);
 		landingFrame.add(lblHima);
 		
 		JLabel lblHimaLong = new JLabel("Health Inspection Mobile Application");
 		lblHimaLong.setFont(new Font("Tahoma", Font.PLAIN, 46));
-		lblHimaLong.setBounds(152, 203, 750, 82);
+		lblHimaLong.setBounds(557, 205, 750, 82);
 		landingFrame.add(lblHimaLong);
 		
 		JButton btnLandingSearch = new JButton("Search Inspections");
@@ -201,8 +200,8 @@ public class GUI {
 				searchFrame.setVisible(true);
 			}
 		});
-		btnLandingSearch.setFont(new Font("SansSerif", Font.PLAIN, 56));
-		btnLandingSearch.setBounds(229, 326, 596, 134);
+		btnLandingSearch.setFont(new Font("SansSerif", Font.PLAIN, 66));
+		btnLandingSearch.setBounds(587, 360, 696, 173);
 		landingFrame.add(btnLandingSearch);
 		
 		JButton btnLandingSync = new JButton("Sync");
@@ -214,11 +213,12 @@ public class GUI {
 				landingFrame.setVisible(false);
 			}
 		});
-		btnLandingSync.setFont(new Font("SansSerif", Font.PLAIN, 56));
-		btnLandingSync.setBounds(229, 518, 596, 134);
+		btnLandingSync.setFont(new Font("SansSerif", Font.PLAIN, 66));
+		btnLandingSync.setBounds(587, 593, 696, 173);
 		landingFrame.add(btnLandingSync);
 		
 		JButton btnLandingLogout = new JButton("Logout");
+		btnLandingLogout.setFont(new Font("Tahoma", Font.PLAIN, 42));
 		btnLandingLogout.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -227,7 +227,7 @@ public class GUI {
 				landingFrame.setVisible(false);
 			}
 		});
-		btnLandingLogout.setBounds(872, 45, 118, 69);
+		btnLandingLogout.setBounds(1660, 45, 174, 82);
 		landingFrame.add(btnLandingLogout);
 		
 		JLabel lblEstablishment = new JLabel("Restaurant");
@@ -246,10 +246,35 @@ public class GUI {
 				violation = textFieldViolation.getText();
 				crit = chckbxCritical.isSelected();
 				//System.out.println("establishment: " + foodest  + ", inspector: " + inspector + ", date: " + date + ", violation: " + violation + ", crit: " + crit);
+				
+				String querySel = "SELECT i.iid, i.inspector, f.name, i.date, i.type, i.total_violation, i.re_required";
+				String queryFrm = "FROM inspection i, food_establishment f, insp_to_est ie";
+				String queryWhr = "WHERE ie.iid = i.iid AND ie.rid = f.rid";
+				
+				if (!foodest.equals("")) {
+					queryWhr = queryWhr + " AND f.name = \"" + foodest + "\"";
+				}
+				if (!inspector.equals("")) {
+					queryWhr = queryWhr + " AND i.inspector = \"" + inspector + "\"";
+				}
+				if (!date.equals("")) {
+					queryWhr = queryWhr + " AND i.date = \"" + date + "\"";
+				}
+				if (!violation.equals("")) {
+					queryFrm = queryFrm + ", violation v, vio_to_insp vi";
+					queryWhr = queryWhr + " AND v.desc = \"" + violation + "\" AND vi.vid = v.vid AND vi.iid = i.iid";
+				}
+				if (crit != false) {
+					queryWhr = queryWhr + " AND i.re_required = 1";
+				}
+				
+				String query = querySel + " " + queryFrm + " " + queryWhr;
+				
 				try
 				{
+					//System.out.println(query);
 					//Populate Results Table
-					String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f, inspection i, violation v";
+					// String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f, inspection i, violation v";
 					PreparedStatement pst=connection.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
 					tableResults.setModel(DbUtils.resultSetToTableModel(rs));
@@ -266,13 +291,13 @@ public class GUI {
 				resultsFrame.setVisible(true);
 			}
 		});
-		btnSearchSearch.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		btnSearchSearch.setBounds(114, 590, 501, 73);
+		btnSearchSearch.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		btnSearchSearch.setBounds(345, 854, 727, 73);
 		searchFrame.add(btnSearchSearch);
 		
 		chckbxCritical = new JCheckBox("Reinspection Required");
-		chckbxCritical.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		chckbxCritical.setBounds(653, 597, 333, 59);
+		chckbxCritical.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		chckbxCritical.setBounds(1112, 854, 549, 73);
 		searchFrame.add(chckbxCritical);
 		
 		JLabel lblDate = new JLabel("Date");
@@ -282,12 +307,12 @@ public class GUI {
 		
 		JLabel lblViolation = new JLabel("Violation");
 		lblViolation.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblViolation.setBounds(543, 285, 443, 59);
+		lblViolation.setBounds(1383, 561, 443, 59);
 		searchFrame.add(lblViolation);
 		
 		JLabel lblInspector = new JLabel("Inspector");
-		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblInspector.setBounds(543, 27, 443, 59);
+		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		lblInspector.setBounds(1162, 46, 234, 68);
 		searchFrame.add(lblInspector);
 		
 		textFieldEstablishment = new JTextField();
@@ -312,22 +337,22 @@ public class GUI {
 		
 		textFieldInspector = new JTextField();
 		textFieldInspector.setColumns(10);
-		textFieldInspector.setBounds(653, 270, 278, 22);
+		textFieldInspector.setBounds(1549, 525, 278, 22);
 		searchFrame.add(textFieldInspector);
 		
 		JLabel label_2 = new JLabel("Find:");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_2.setBounds(553, 270, 88, 22);
+		label_2.setBounds(1449, 525, 88, 22);
 		searchFrame.add(label_2);
 		
 		textFieldViolation = new JTextField();
 		textFieldViolation.setColumns(10);
-		textFieldViolation.setBounds(653, 528, 278, 22);
+		textFieldViolation.setBounds(1493, 804, 278, 22);
 		searchFrame.add(textFieldViolation);
 		
 		JLabel label_3 = new JLabel("Find:");
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_3.setBounds(553, 528, 88, 22);
+		label_3.setBounds(1393, 804, 88, 22);
 		searchFrame.add(label_3);
 		
 		JButton btnSearchReturn = new JButton("Main Menu");
@@ -339,8 +364,8 @@ public class GUI {
 				landingFrame.setVisible(true);
 			}
 		});
-		btnSearchReturn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnSearchReturn.setBounds(847, 13, 139, 43);
+		btnSearchReturn.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnSearchReturn.setBounds(1612, 20, 245, 73);
 		searchFrame.add(btnSearchReturn);
 		
 		scrollPaneEstablishment = new JScrollPane();
@@ -351,7 +376,7 @@ public class GUI {
 		scrollPaneEstablishment.setViewportView(tableEstablishment);
 		
 		scrollPaneInspector = new JScrollPane();
-		scrollPaneInspector.setBounds(553, 99, 389, 158);
+		scrollPaneInspector.setBounds(1162, 127, 660, 385);
 		searchFrame.add(scrollPaneInspector);
 		
 		tableInspector = new JTable();
@@ -365,11 +390,26 @@ public class GUI {
 		scrollPaneDate.setViewportView(tableDate);
 		
 		scrollPaneViolation = new JScrollPane();
-		scrollPaneViolation.setBounds(543, 357, 399, 158);
+		scrollPaneViolation.setBounds(1383, 633, 399, 158);
 		searchFrame.add(scrollPaneViolation);
 		
 		tableViolation = new JTable();
 		scrollPaneViolation.setViewportView(tableViolation);
+		
+		JButton btnClear = new JButton("Clear Data");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				textFieldEstablishment.setText("");
+				textFieldInspector.setText("");
+				textFieldDate.setText("");
+				textFieldViolation.setText("");
+				chckbxCritical.setSelected(false);
+			}
+		});
+		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		btnClear.setBounds(12, 854, 306, 73);
+		searchFrame.add(btnClear);
 		
 		
 		//************************SearchPanel's Four JTable mouse listeners:*****************
@@ -413,12 +453,12 @@ public class GUI {
 		
 		JLabel lblSyncingToMobile = new JLabel("Syncing to Mobile Device");
 		lblSyncingToMobile.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		lblSyncingToMobile.setBounds(153, 119, 866, 336);
+		lblSyncingToMobile.setBounds(536, 121, 866, 336);
 		syncFrame.add(lblSyncingToMobile);
 		
 		JLabel label = new JLabel("...");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 96));
-		label.setBounds(475, 395, 338, 96);
+		label.setBounds(889, 420, 173, 96);
 		syncFrame.add(label);
 		
 		JButton btnSyncCancel = new JButton("Cancel");
@@ -431,7 +471,7 @@ public class GUI {
 			}
 		});
 		btnSyncCancel.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		btnSyncCancel.setBounds(422, 527, 199, 77);
+		btnSyncCancel.setBounds(853, 675, 199, 77);
 		syncFrame.add(btnSyncCancel);
 		
 		JLabel lblResults = new JLabel("Results");
@@ -443,91 +483,59 @@ public class GUI {
 		lblResultsMatching.setBounds(375, 144, 222, 27);
 		resultsFrame.add(lblResultsMatching);
 		
-		txtRestaurant = new JTextField();
-		txtRestaurant.setText("Restaurant\t             Inspector             Date                 Violation");
-		txtRestaurant.setBounds(90, 211, 692, 22);
-		resultsFrame.add(txtRestaurant);
-		txtRestaurant.setColumns(10);
-		
 		JButton btnResultsReturn = new JButton("Return");
 		btnResultsReturn.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				//Establishment
-				try
-					{
-						//Populate Food Establishment Table
-						String query1="SELECT f.name FROM food_establishment f";
-						PreparedStatement pst1=connection.prepareStatement(query1);
-						ResultSet rs1 = pst1.executeQuery();
-						tableEstablishment.setModel(DbUtils.resultSetToTableModel(rs1));
-						
-						//close establishment stuff
-						rs1.close();
-						pst1.close();
-					}
-				catch (Exception ex1)
-					{
-						JOptionPane.showMessageDialog(null, ex1);
-					}
+				foodest = textFieldEstablishment.getText();
+				inspector = textFieldInspector.getText();
+				date = textFieldDate.getText();
+				violation = textFieldViolation.getText();
+				crit = chckbxCritical.isSelected();
+				//System.out.println("establishment: " + foodest  + ", inspector: " + inspector + ", date: " + date + ", violation: " + violation + ", crit: " + crit);
 				
-				//date
-				try
-					{
-						//Populate Date Table
-						String query2="SELECT DISTINCT i.date FROM inspection i; (Format YYYY-MM-DD HH:MM:SS)";
-						PreparedStatement pst2=connection.prepareStatement(query2);
-						ResultSet rs2 = pst2.executeQuery();
-						tableDate.setModel(DbUtils.resultSetToTableModel(rs2));
-						
-						//close date stuff
-						rs2.close();
-						pst2.close();
-					}
-				catch (Exception ex2)
-					{
-						JOptionPane.showMessageDialog(null, ex2);
-					}
+				String querySel = "SELECT i.iid, i.inspector, f.name, i.date, i.type, i.total_violation, i.re_required";
+				String queryFrm = "FROM inspection i, food_establishment f, insp_to_est ie";
+				String queryWhr = "WHERE ie.iid = i.iid AND ie.rid = f.rid";
 				
-				//inspector
-				try
-					{
-						//Populate Inspector Table
-						String query3="SELECT f.name FROM food_establishment f";
-						PreparedStatement pst3=connection.prepareStatement(query3);
-						ResultSet rs3 = pst3.executeQuery();
-						tableInspector.setModel(DbUtils.resultSetToTableModel(rs3));
-						
-						//close inspector stuff
-						rs3.close();
-						pst3.close();
-					}
-				catch (Exception ex3)
-					{
-						JOptionPane.showMessageDialog(null, ex3);
-					}
+				if (foodest != "") {
+					queryWhr = queryWhr + " AND f.name = \"" + foodest + "\"";
+				}
+				if (inspector != "") {
+					queryWhr = queryWhr + " AND i.inspector = \"" + inspector + "\"";
+				}
+				if (date != "") {
+					queryWhr = queryWhr + " AND i.date = \"" + date + "\"";
+				}
+				if (violation != "") {
+					queryFrm = queryFrm + ", violation v, vio_to_insp vi";
+					queryWhr = queryWhr + " AND v.desc = \"" + violation + "\" AND vi.vid = v.vid AND vi.iid = i.iid";
+				}
+				if (crit != false) {
+					queryWhr = queryWhr + " AND i.re_required = 1";
+				}
 				
-				//violation
-				try
-					{
-						//Populate Violation Table
-						String query4="SELECT f.name FROM food_establishment f";
-						PreparedStatement pst4=connection.prepareStatement(query4);
-						ResultSet rs4 = pst4.executeQuery();
-						tableViolation.setModel(DbUtils.resultSetToTableModel(rs4));
-						
-						//close violation stuff
-						rs4.close();
-						pst4.close();
-					}
-				catch (Exception ex4)
-					{
-						JOptionPane.showMessageDialog(null, ex4);
-					}
+				String query = querySel + " " + queryFrm + " " + queryWhr;
 				
-				resultsFrame.setVisible(false);
+				try
+				{
+					//Populate Results Table
+					// String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f, inspection i, violation v";
+					PreparedStatement pst=connection.prepareStatement(query);
+					ResultSet rs = pst.executeQuery();
+					tableResults.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					rs.close();
+					pst.close();
+				}
+				catch (Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, ex);
+				}
+				
 				searchFrame.setVisible(true);
+				resultsFrame.setVisible(false);
 			}
 		});
 		btnResultsReturn.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -567,7 +575,7 @@ public class GUI {
 		resultsFrame.add(buttonEmail4);
 		
 		scrollPaneResults = new JScrollPane();
-		scrollPaneResults.setBounds(90, 232, 692, 364);
+		scrollPaneResults.setBounds(56, 194, 726, 402);
 		resultsFrame.add(scrollPaneResults);
 		
 		tableResults = new JTable();
@@ -575,27 +583,28 @@ public class GUI {
 		
 		JLabel lblLoginHimaTitle = new JLabel("H.I.M.A. Login");
 		lblLoginHimaTitle.setFont(new Font("Tahoma", Font.PLAIN, 64));
-		lblLoginHimaTitle.setBounds(303, 48, 429, 163);
+		lblLoginHimaTitle.setBounds(705, 69, 560, 220);
 		loginFrame.add(lblLoginHimaTitle);
 		
 		JLabel lblLoginUsername = new JLabel("Username");
-		lblLoginUsername.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblLoginUsername.setBounds(303, 237, 134, 53);
+		lblLoginUsername.setFont(new Font("Tahoma", Font.PLAIN, 34));
+		lblLoginUsername.setBounds(679, 302, 193, 72);
 		loginFrame.add(lblLoginUsername);
 		
 		txtfldLoginUsername = new JTextField();
-		txtfldLoginUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtfldLoginUsername.setBounds(303, 303, 394, 45);
+		txtfldLoginUsername.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		txtfldLoginUsername.setBounds(679, 387, 475, 62);
 		loginFrame.add(txtfldLoginUsername);
 		txtfldLoginUsername.setColumns(10);
 		
 		JLabel lblLoginPassword = new JLabel("Password");
-		lblLoginPassword.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblLoginPassword.setBounds(303, 385, 134, 53);
+		lblLoginPassword.setFont(new Font("Tahoma", Font.PLAIN, 34));
+		lblLoginPassword.setBounds(679, 495, 193, 72);
 		loginFrame.add(lblLoginPassword);
 		
 		passwordFieldLogin = new JPasswordField();
-		passwordFieldLogin.setBounds(313, 451, 380, 45);
+		passwordFieldLogin.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		passwordFieldLogin.setBounds(679, 580, 485, 62);
 		loginFrame.add(passwordFieldLogin);
 		
 		JButton btnLoginLogin = new JButton("Login");
@@ -649,8 +658,8 @@ public class GUI {
 				}
 			}
 		});
-		btnLoginLogin.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		btnLoginLogin.setBounds(382, 563, 250, 62);
+		btnLoginLogin.setFont(new Font("Tahoma", Font.PLAIN, 42));
+		btnLoginLogin.setBounds(705, 713, 432, 102);
 		loginFrame.add(btnLoginLogin);
 	}
 }
