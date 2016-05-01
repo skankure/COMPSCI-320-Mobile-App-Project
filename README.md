@@ -7,3 +7,6 @@
 ####Supriya Kankure
 ####Paul Cho
 ####Pandi Rrapo
+
+## Application Description
+Hima stands for Health Inspector Mobile Application. 
