@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 
 public class GUI2 {
 
-	private JFrame frame;
+	private JFrame frame; 
 	private JPanel landingFrame, searchFrame, syncFrame, resultsFrame, loginFrame;
 	private JTextField textField;
 	private JTextField textField_1;

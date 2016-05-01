@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class SqliteConnection {
 
-    Connection conn = null;
+    Connection conn = null; 
 
     public static Statement dbConnect() throws ClassNotFoundException{
     	

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
@@ -22,18 +23,21 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
 public class GUI {
-
+//carriage return to login
+	private String foodest,	inspector, date, violation;
+	private boolean crit;
 	private JFrame frame;
 	private JPanel landingFrame, searchFrame, syncFrame, resultsFrame, loginFrame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textFieldEstablishment;
+	private JTextField textFieldDate;
+	private JTextField textFieldInspector;
+	private JTextField textFieldViolation;
 	private JTextField txtRestaurant;
 	private JTextField txtfldLoginUsername;
 	private JPasswordField passwordFieldLogin;
 	private JTable tableEstablishment, tableDate, tableViolation, tableInspector, tableResults;
 	private JScrollPane scrollPaneEstablishment, scrollPaneDate, scrollPaneViolation, scrollPaneInspector, scrollPaneResults;
+	private JCheckBox chckbxCritical;
 
 	/**
 	 * Launch the application.
@@ -226,23 +230,29 @@ public class GUI {
 		btnLandingLogout.setBounds(872, 45, 118, 69);
 		landingFrame.add(btnLandingLogout);
 		
-		JLabel lblRestaurant = new JLabel("Restaurant");
-		lblRestaurant.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblRestaurant.setBounds(59, 27, 443, 59);
-		searchFrame.add(lblRestaurant);
+		JLabel lblEstablishment = new JLabel("Restaurant");
+		lblEstablishment.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblEstablishment.setBounds(59, 27, 443, 59);
+		searchFrame.add(lblEstablishment);
 		
 		JButton btnSearchSearch = new JButton("Search");
 		btnSearchSearch.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				foodest = textFieldEstablishment.getText();
+				inspector = textFieldInspector.getText();
+				date = textFieldDate.getText();
+				violation = textFieldViolation.getText();
+				crit = chckbxCritical.isSelected();
+				//System.out.println("establishment: " + foodest  + ", inspector: " + inspector + ", date: " + date + ", violation: " + violation + ", crit: " + crit);
 				try
 				{
 					//Populate Results Table
 					String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f, inspection i, violation v";
 					PreparedStatement pst=connection.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
-					tableViolation.setModel(DbUtils.resultSetToTableModel(rs));
+					tableResults.setModel(DbUtils.resultSetToTableModel(rs));
 					
 					rs.close();
 					pst.close();
@@ -257,12 +267,12 @@ public class GUI {
 			}
 		});
 		btnSearchSearch.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		btnSearchSearch.setBounds(114, 590, 558, 73);
+		btnSearchSearch.setBounds(114, 590, 501, 73);
 		searchFrame.add(btnSearchSearch);
 		
-		JCheckBox chckbxCritical = new JCheckBox("Critical");
+		chckbxCritical = new JCheckBox("Reinspection Required");
 		chckbxCritical.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		chckbxCritical.setBounds(717, 597, 225, 59);
+		chckbxCritical.setBounds(653, 597, 333, 59);
 		searchFrame.add(chckbxCritical);
 		
 		JLabel lblDate = new JLabel("Date");
@@ -280,40 +290,40 @@ public class GUI {
 		lblInspector.setBounds(543, 27, 443, 59);
 		searchFrame.add(lblInspector);
 		
-		textField = new JTextField();
-		textField.setBounds(179, 270, 278, 22);
-		searchFrame.add(textField);
-		textField.setColumns(10);
+		textFieldEstablishment = new JTextField();
+		textFieldEstablishment.setBounds(179, 270, 278, 22);
+		searchFrame.add(textFieldEstablishment);
+		textFieldEstablishment.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Find:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblNewLabel.setBounds(79, 270, 88, 22);
 		searchFrame.add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(182, 528, 278, 22);
-		searchFrame.add(textField_1);
+		textFieldDate = new JTextField();
+		textFieldDate.setColumns(10);
+		textFieldDate.setBounds(182, 528, 278, 22);
+		searchFrame.add(textFieldDate);
 		
 		JLabel label_1 = new JLabel("Find:");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_1.setBounds(82, 528, 88, 22);
 		searchFrame.add(label_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(653, 270, 278, 22);
-		searchFrame.add(textField_2);
+		textFieldInspector = new JTextField();
+		textFieldInspector.setColumns(10);
+		textFieldInspector.setBounds(653, 270, 278, 22);
+		searchFrame.add(textFieldInspector);
 		
 		JLabel label_2 = new JLabel("Find:");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_2.setBounds(553, 270, 88, 22);
 		searchFrame.add(label_2);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(653, 528, 278, 22);
-		searchFrame.add(textField_3);
+		textFieldViolation = new JTextField();
+		textFieldViolation.setColumns(10);
+		textFieldViolation.setBounds(653, 528, 278, 22);
+		searchFrame.add(textFieldViolation);
 		
 		JLabel label_3 = new JLabel("Find:");
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -360,6 +370,46 @@ public class GUI {
 		
 		tableViolation = new JTable();
 		scrollPaneViolation.setViewportView(tableViolation);
+		
+		
+		//************************SearchPanel's Four JTable mouse listeners:*****************
+				//tableEstablishment, tableDate, tableViolation, tableInspector
+				tableEstablishment.addMouseListener(new java.awt.event.MouseAdapter() 
+				{
+				    @Override
+				    public void mouseClicked(java.awt.event.MouseEvent evt) 
+				    {
+				        textFieldEstablishment.setText((String) tableEstablishment.getValueAt(tableEstablishment.rowAtPoint(evt.getPoint()), tableEstablishment.columnAtPoint(evt.getPoint())));
+				    }
+				});
+
+				tableDate.addMouseListener(new java.awt.event.MouseAdapter() 
+				{
+				    @Override
+				    public void mouseClicked(java.awt.event.MouseEvent evt) 
+				    {
+				        textFieldDate.setText((String) tableDate.getValueAt(tableDate.rowAtPoint(evt.getPoint()), tableDate.columnAtPoint(evt.getPoint())));
+				    }
+				});
+				
+				tableViolation.addMouseListener(new java.awt.event.MouseAdapter() 
+				{
+				    @Override
+				    public void mouseClicked(java.awt.event.MouseEvent evt) 
+				    {
+				        textFieldViolation.setText((String) tableViolation.getValueAt(tableViolation.rowAtPoint(evt.getPoint()), tableViolation.columnAtPoint(evt.getPoint())));
+				    }
+				});
+				
+				tableInspector.addMouseListener(new java.awt.event.MouseAdapter() 
+				{
+				    @Override
+				    public void mouseClicked(java.awt.event.MouseEvent evt) 
+				    {
+				        textFieldInspector.setText((String) tableInspector.getValueAt(tableInspector.rowAtPoint(evt.getPoint()), tableInspector.columnAtPoint(evt.getPoint())));
+				    }
+				});
+		
 		
 		JLabel lblSyncingToMobile = new JLabel("Syncing to Mobile Device");
 		lblSyncingToMobile.setFont(new Font("Tahoma", Font.PLAIN, 70));
@@ -556,29 +606,38 @@ public class GUI {
 				try
 				{
 					//looking for help from paul here for username authentication
-					String query="";
+					String user = txtfldLoginUsername.getText();
+					String password = passwordFieldLogin.getText();
+					String query="SELECT u.pass FROM user u WHERE user = \"" + user + "\"";
 					PreparedStatement pst=connection.prepareStatement(query);
-					pst.setString(1, txtfldLoginUsername.getText());
-					pst.setString(2, passwordFieldLogin.getText());
-					
 					ResultSet rs = pst.executeQuery();
-					int count=0;
-					while (rs.next())
-					{
-						count++;
-						
-						if(count == 1)
-						{
-							JOptionPane.showMessageDialog(null, "Username and password is correct");
+					
+					// Salt and Hash
+					password = password + "GwxH0kv50#Jo%QyDLff#BT9n9L5PmuUj";
+					MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+					messageDigest.update(password.getBytes());
+					String encryptedString = new String(messageDigest.digest());
+					
+					try {
+						if (!rs.next()) {
+							JOptionPane.showMessageDialog(null, "User: \"" + user + "\" doesn't exist!");
 						}
-						else if(count >= 1)
-						{
-							JOptionPane.showMessageDialog(null, "Duplicate Username and password");
+					} catch (SQLException ex5) {
+						ex5.printStackTrace();
+					}
+					
+					// Check if password hashes match
+					try {
+						if (rs.getString(1).equals(encryptedString)) {
+							JOptionPane.showMessageDialog(null, "User authenticated");
+							loginFrame.setVisible(false);
+							landingFrame.setVisible(true);
 						}
-						else
-						{
-							JOptionPane.showMessageDialog(null, "Invalid Username and password");
+						else {
+							JOptionPane.showMessageDialog(null, "User found, wrong password");
 						}
+					} catch (SQLException ex6) {
+						ex6.printStackTrace();
 					}
 					
 					rs.close();
@@ -588,8 +647,6 @@ public class GUI {
 				{
 					JOptionPane.showMessageDialog(null, x);
 				}
-				loginFrame.setVisible(false);
-				landingFrame.setVisible(true);
 			}
 		});
 		btnLoginLogin.setFont(new Font("Tahoma", Font.PLAIN, 28));
