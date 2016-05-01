@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -12,6 +14,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
+import java.sql.*;
 
 public class GUI {
 
@@ -41,11 +45,16 @@ public class GUI {
 		});
 	}
 
+	
+	//connect to the database
+	Connection connection=null;
 	/**
 	 * Create the application.
+	 * @throws ClassNotFoundException 
 	 */
-	public GUI() {
+	public GUI() throws ClassNotFoundException {
 		initialize();
+		connection=sqlConnect.dbConnector();
 	}
 	
 	
@@ -104,6 +113,17 @@ public class GUI {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+//				//looking for help from paul here
+//				String query="";
+//				PreparedStatement pst=connection.prepareStatement(query);
+//				pst.setString(1, txtfldLoginUsername.getText());
+//				pst.setString(2, passwordFieldLogin.getText());
+//				
+//				ResultSet rs = pst.executeQuery();
+//				int count=0;
+//				while (rs.next())
+				//RETURN HERE IN THE MORNING
+				
 				landingFrame.setVisible(false);
 				searchFrame.setVisible(true);
 			}
@@ -350,6 +370,41 @@ public class GUI {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				try
+				{
+					//looking for help from paul here
+					String query="";
+					PreparedStatement pst=connection.prepareStatement(query);
+					pst.setString(1, txtfldLoginUsername.getText());
+					pst.setString(2, passwordFieldLogin.getText());
+					
+					ResultSet rs = pst.executeQuery();
+					int count=0;
+					while (rs.next())
+					{
+						count++;
+						
+						if(count == 1)
+						{
+							JOptionPane.showMessageDialog(null, "Username and password is correct");
+						}
+						else if(count >= 1)
+						{
+							JOptionPane.showMessageDialog(null, "Duplicate Username and password");
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Invalid Username and password");
+						}
+					}
+					
+					rs.close();
+					pst.close();
+				}
+				catch (Exception x)
+				{
+					JOptionPane.showMessageDialog(null, x);
+				}
 				loginFrame.setVisible(false);
 				landingFrame.setVisible(true);
 			}
