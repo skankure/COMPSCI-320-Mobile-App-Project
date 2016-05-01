@@ -1,4 +1,4 @@
-# CS 320 Software Engineering
+#CS 320 Software Engineering
 Green Team HIMA Application
 ##Members:
 Andrew Raleigh
@@ -8,5 +8,5 @@ Supriya Kankure
 Paul Cho
 Pandi Rrapo
 
-## Application Description
+##Application Description:
 Hima stands for Health Inspector Mobile Application.
