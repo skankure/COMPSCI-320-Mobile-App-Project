@@ -11,11 +11,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JPasswordField;
 
 import java.sql.*;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class GUI {
 
@@ -28,6 +32,8 @@ public class GUI {
 	private JTextField txtRestaurant;
 	private JTextField txtfldLoginUsername;
 	private JPasswordField passwordFieldLogin;
+	private JTable tableEstablishment, tableDate, tableViolation, tableInspector, tableResults;
+	private JScrollPane scrollPaneEstablishment, scrollPaneDate, scrollPaneViolation, scrollPaneInspector, scrollPaneResults;
 
 	/**
 	 * Launch the application.
@@ -113,17 +119,80 @@ public class GUI {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-//				//looking for help from paul here
-//				String query="";
-//				PreparedStatement pst=connection.prepareStatement(query);
-//				pst.setString(1, txtfldLoginUsername.getText());
-//				pst.setString(2, passwordFieldLogin.getText());
-//				
-//				ResultSet rs = pst.executeQuery();
-//				int count=0;
-//				while (rs.next())
-				//RETURN HERE IN THE MORNING
+				//looking for help from paul here
 				
+				//Establishment
+				try
+					{
+						//Populate Food Establishment Table
+						String query1="SELECT f.name FROM food_establishment f";
+						PreparedStatement pst1=connection.prepareStatement(query1);
+						ResultSet rs1 = pst1.executeQuery();
+						tableEstablishment.setModel(DbUtils.resultSetToTableModel(rs1));
+						
+						//close establishment stuff
+						rs1.close();
+						pst1.close();
+					}
+				catch (Exception ex1)
+					{
+						JOptionPane.showMessageDialog(null, ex1);
+					}
+				
+				//date
+				try
+					{
+						//Populate Date Table
+						String query2="SELECT DISTINCT i.date FROM inspection i; (Format YYYY-MM-DD HH:MM:SS)";
+						PreparedStatement pst2=connection.prepareStatement(query2);
+						ResultSet rs2 = pst2.executeQuery();
+						tableDate.setModel(DbUtils.resultSetToTableModel(rs2));
+						
+						//close date stuff
+						rs2.close();
+						pst2.close();
+					}
+				catch (Exception ex2)
+					{
+						JOptionPane.showMessageDialog(null, ex2);
+					}
+				
+				//inspector
+				try
+					{
+						//Populate Inspector Table
+						String query3="SELECT f.name FROM food_establishment f";
+						PreparedStatement pst3=connection.prepareStatement(query3);
+						ResultSet rs3 = pst3.executeQuery();
+						tableInspector.setModel(DbUtils.resultSetToTableModel(rs3));
+						
+						//close inspector stuff
+						rs3.close();
+						pst3.close();
+					}
+				catch (Exception ex3)
+					{
+						JOptionPane.showMessageDialog(null, ex3);
+					}
+				
+				//violation
+				try
+					{
+						//Populate Violation Table
+						String query4="SELECT f.name FROM food_establishment f";
+						PreparedStatement pst4=connection.prepareStatement(query4);
+						ResultSet rs4 = pst4.executeQuery();
+						tableViolation.setModel(DbUtils.resultSetToTableModel(rs4));
+						
+						//close violation stuff
+						rs4.close();
+						pst4.close();
+					}
+				catch (Exception ex4)
+					{
+						JOptionPane.showMessageDialog(null, ex4);
+					}
+					
 				landingFrame.setVisible(false);
 				searchFrame.setVisible(true);
 			}
@@ -167,6 +236,22 @@ public class GUI {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				try
+				{
+					//Populate Results Table
+					String query="SELECT f.name, f.telephone, i.inspector, i.date, v.desc FROM food_establishment f";
+					PreparedStatement pst=connection.prepareStatement(query);
+					ResultSet rs = pst.executeQuery();
+					tableViolation.setModel(DbUtils.resultSetToTableModel(rs));
+					
+					rs.close();
+					pst.close();
+				}
+				catch (Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, ex);
+				}
+				
 				searchFrame.setVisible(false);
 				resultsFrame.setVisible(true);
 			}
@@ -194,26 +279,6 @@ public class GUI {
 		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblInspector.setBounds(543, 27, 443, 59);
 		searchFrame.add(lblInspector);
-		
-		JTextArea txtrMcdonalds = new JTextArea();
-		txtrMcdonalds.setText("McDonalds\r\nWendy's\r\nRoots Cafe\r\nWorcester Dining Common\r\nRoute 9 Diner");
-		txtrMcdonalds.setBounds(69, 99, 391, 158);
-		searchFrame.add(txtrMcdonalds);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setText("1/15/15\r\n2/25/15\r\n8/8/15\r\n2/1/16\r\n4/10/16");
-		textArea.setBounds(69, 357, 391, 158);
-		searchFrame.add(textArea);
-		
-		JTextArea txtrSteveSteveNot = new JTextArea();
-		txtrSteveSteveNot.setText("Steve\r\nSteve\r\nNot Steve\r\nSteve\r\nSteve");
-		txtrSteveSteveNot.setBounds(543, 99, 391, 158);
-		searchFrame.add(txtrSteveSteveNot);
-		
-		JTextArea txtrSmellyPotatoesBirds = new JTextArea();
-		txtrSmellyPotatoesBirds.setText("Smelly Potatoes\r\nBirds living in bread drawer\r\nGreen mac n' cheese\r\nManager didn't wear deoderant: terrible odor\r\nRat poop. Rat poop everywhere");
-		txtrSmellyPotatoesBirds.setBounds(543, 357, 391, 158);
-		searchFrame.add(txtrSmellyPotatoesBirds);
 		
 		textField = new JTextField();
 		textField.setBounds(179, 270, 278, 22);
@@ -268,6 +333,34 @@ public class GUI {
 		btnSearchReturn.setBounds(847, 13, 139, 43);
 		searchFrame.add(btnSearchReturn);
 		
+		scrollPaneEstablishment = new JScrollPane();
+		scrollPaneEstablishment.setBounds(69, 99, 391, 158);
+		searchFrame.add(scrollPaneEstablishment);
+		
+		tableEstablishment = new JTable();
+		scrollPaneEstablishment.setViewportView(tableEstablishment);
+		
+		scrollPaneInspector = new JScrollPane();
+		scrollPaneInspector.setBounds(553, 99, 389, 158);
+		searchFrame.add(scrollPaneInspector);
+		
+		tableInspector = new JTable();
+		scrollPaneInspector.setViewportView(tableInspector);
+		
+		scrollPaneDate = new JScrollPane();
+		scrollPaneDate.setBounds(69, 357, 388, 158);
+		searchFrame.add(scrollPaneDate);
+		
+		tableDate = new JTable();
+		scrollPaneDate.setViewportView(tableDate);
+		
+		scrollPaneViolation = new JScrollPane();
+		scrollPaneViolation.setBounds(543, 357, 399, 158);
+		searchFrame.add(scrollPaneViolation);
+		
+		tableViolation = new JTable();
+		scrollPaneViolation.setViewportView(tableViolation);
+		
 		JLabel lblSyncingToMobile = new JLabel("Syncing to Mobile Device");
 		lblSyncingToMobile.setFont(new Font("Tahoma", Font.PLAIN, 70));
 		lblSyncingToMobile.setBounds(153, 119, 866, 336);
@@ -300,11 +393,6 @@ public class GUI {
 		lblResultsMatching.setBounds(375, 144, 222, 27);
 		resultsFrame.add(lblResultsMatching);
 		
-		JTextArea txtrRootsCafe = new JTextArea();
-		txtrRootsCafe.setText("Roots Cafe       Steve        1/19/13     Stinky Stuff\r\n\r\nRoots Cafe       Steve        5/28/14     Rabid guinea pig loose in fries\r\n\r\nRoots Cafe       Steve        9/14/15     Manager left his hairnet in the break room\r\n\r\nRoots Cafe       Steve        2/8/16      Emloyee didn't wash hands");
-		txtrRootsCafe.setBounds(90, 234, 692, 362);
-		resultsFrame.add(txtrRootsCafe);
-		
 		txtRestaurant = new JTextField();
 		txtRestaurant.setText("Restaurant\t             Inspector             Date                 Violation");
 		txtRestaurant.setBounds(90, 211, 692, 22);
@@ -316,6 +404,78 @@ public class GUI {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				//Establishment
+				try
+					{
+						//Populate Food Establishment Table
+						String query1="SELECT f.name FROM food_establishment f";
+						PreparedStatement pst1=connection.prepareStatement(query1);
+						ResultSet rs1 = pst1.executeQuery();
+						tableEstablishment.setModel(DbUtils.resultSetToTableModel(rs1));
+						
+						//close establishment stuff
+						rs1.close();
+						pst1.close();
+					}
+				catch (Exception ex1)
+					{
+						JOptionPane.showMessageDialog(null, ex1);
+					}
+				
+				//date
+				try
+					{
+						//Populate Date Table
+						String query2="SELECT DISTINCT i.date FROM inspection i; (Format YYYY-MM-DD HH:MM:SS)";
+						PreparedStatement pst2=connection.prepareStatement(query2);
+						ResultSet rs2 = pst2.executeQuery();
+						tableDate.setModel(DbUtils.resultSetToTableModel(rs2));
+						
+						//close date stuff
+						rs2.close();
+						pst2.close();
+					}
+				catch (Exception ex2)
+					{
+						JOptionPane.showMessageDialog(null, ex2);
+					}
+				
+				//inspector
+				try
+					{
+						//Populate Inspector Table
+						String query3="SELECT f.name FROM food_establishment f";
+						PreparedStatement pst3=connection.prepareStatement(query3);
+						ResultSet rs3 = pst3.executeQuery();
+						tableInspector.setModel(DbUtils.resultSetToTableModel(rs3));
+						
+						//close inspector stuff
+						rs3.close();
+						pst3.close();
+					}
+				catch (Exception ex3)
+					{
+						JOptionPane.showMessageDialog(null, ex3);
+					}
+				
+				//violation
+				try
+					{
+						//Populate Violation Table
+						String query4="SELECT f.name FROM food_establishment f";
+						PreparedStatement pst4=connection.prepareStatement(query4);
+						ResultSet rs4 = pst4.executeQuery();
+						tableViolation.setModel(DbUtils.resultSetToTableModel(rs4));
+						
+						//close violation stuff
+						rs4.close();
+						pst4.close();
+					}
+				catch (Exception ex4)
+					{
+						JOptionPane.showMessageDialog(null, ex4);
+					}
+				
 				resultsFrame.setVisible(false);
 				searchFrame.setVisible(true);
 			}
@@ -339,6 +499,29 @@ public class GUI {
 		JButton button_2 = new JButton("Download PDF");
 		button_2.setBounds(794, 347, 131, 25);
 		resultsFrame.add(button_2);
+		
+		JButton btnEmail1 = new JButton("Email");
+		btnEmail1.setBounds(937, 233, 63, 25);
+		resultsFrame.add(btnEmail1);
+		
+		JButton buttonEmail2 = new JButton("Email");
+		buttonEmail2.setBounds(937, 271, 63, 25);
+		resultsFrame.add(buttonEmail2);
+		
+		JButton buttonEmail3 = new JButton("Email");
+		buttonEmail3.setBounds(937, 309, 63, 25);
+		resultsFrame.add(buttonEmail3);
+		
+		JButton buttonEmail4 = new JButton("Email");
+		buttonEmail4.setBounds(937, 347, 63, 25);
+		resultsFrame.add(buttonEmail4);
+		
+		scrollPaneResults = new JScrollPane();
+		scrollPaneResults.setBounds(90, 232, 692, 364);
+		resultsFrame.add(scrollPaneResults);
+		
+		tableResults = new JTable();
+		scrollPaneResults.setViewportView(tableResults);
 		
 		JLabel lblLoginHimaTitle = new JLabel("H.I.M.A. Login");
 		lblLoginHimaTitle.setFont(new Font("Tahoma", Font.PLAIN, 64));
@@ -372,7 +555,7 @@ public class GUI {
 			{
 				try
 				{
-					//looking for help from paul here
+					//looking for help from paul here for username authentication
 					String query="";
 					PreparedStatement pst=connection.prepareStatement(query);
 					pst.setString(1, txtfldLoginUsername.getText());
