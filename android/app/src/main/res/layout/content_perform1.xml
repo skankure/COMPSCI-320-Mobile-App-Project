@@ -26,13 +26,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Establishment Name"
         android:ems="10"
         android:id="@+id/editText"
         android:editable="true"
         android:layout_marginBottom="159dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:hint="Establishment Name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -40,10 +40,11 @@
         android:inputType="phone"
         android:ems="10"
         android:id="@+id/editText2"
-        android:text="Telephone"
         android:editable="true"
         android:layout_above="@+id/editText4"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:hint="Telephone" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -51,19 +52,20 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/editText3"
-        android:text="Street Address"
         android:editable="true"
         android:layout_above="@+id/editText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:hint="Street Address" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText4"
-        android:text="Town"
         android:editable="true"
         android:layout_above="@+id/editText3"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:hint="Town" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -71,19 +73,21 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/editText5"
-        android:text="Date Established"
         android:editable="true"
         android:layout_above="@+id/editText2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:hint="Date Established" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:id="@+id/spinner"
         android:spinnerMode="dropdown"
-        android:layout_above="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -94,15 +98,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
         android:onClick="buttonContinueOnClick" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select from Existing Establishment"
-        android:id="@+id/textView3"
-        android:layout_alignTop="@+id/spinner"
-        android:layout_alignRight="@+id/editText5"
-        android:layout_alignEnd="@+id/editText5" />
 
     <TextView
         android:layout_width="wrap_content"

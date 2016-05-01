@@ -7,4 +7,19 @@
     <string name="title_activity_perform2">Health Inspection</string>
     <string name="title_activity_perform3">Health Inspection</string>
     <string name="title_activity_search">Search</string>
+
+    <string-array name="restaurants">
+        <item>Select Existing Restaurant</item>
+        <item>McDonald</item>
+        <item>Wendy</item>
+        <item>Burger King</item>
+    </string-array>
+
+    <string-array name="violations">
+        <item>Select A Violation</item>
+        <item>590.005: Equipment Utensils and Linen</item>
+        <item>590.006: Water, Plumbing and Waste</item>
+        <item>590.008: Poisonous or Toxic Materials</item>
+    </string-array>
+    <string name="title_activity_print">Print</string>
 </resources>

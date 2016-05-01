@@ -16,12 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="PIC Name"
         android:ems="10"
         android:id="@+id/editText6"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:hint="PIC Name" />
 
     <RadioButton
         android:layout_width="wrap_content"
@@ -55,9 +55,9 @@
         android:layout_alignLeft="@+id/radioButton"
         android:layout_alignStart="@+id/radioButton"
         android:layout_marginTop="26dp"
-        android:text="Additional Notes"
         android:layout_alignRight="@+id/radioButton2"
-        android:layout_alignEnd="@+id/radioButton2" />
+        android:layout_alignEnd="@+id/radioButton2"
+        android:hint="Additional Notes" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
         android:layout_marginTop="26dp"
         android:layout_alignRight="@+id/editText7"
         android:layout_alignEnd="@+id/editText7"
-        android:text="Correction Plan" />
+        android:hint="Correction Plan" />
 
     <Button
         android:layout_width="wrap_content"
@@ -79,7 +79,8 @@
         android:layout_marginTop="88dp"
         android:layout_below="@+id/editText8"
         android:layout_alignLeft="@+id/editText6"
-        android:layout_alignStart="@+id/editText6" />
+        android:layout_alignStart="@+id/editText6"
+        android:onClick="buttonPreview"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -88,5 +89,6 @@
         android:id="@+id/button9"
         android:layout_alignBottom="@+id/button8"
         android:layout_alignRight="@+id/editText6"
-        android:layout_alignEnd="@+id/editText6" />
+        android:layout_alignEnd="@+id/editText6"
+        android:onClick="buttonPrint"/>
 </RelativeLayout>

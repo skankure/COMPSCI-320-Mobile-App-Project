@@ -19,45 +19,58 @@
         android:id="@+id/checkBox"
         android:checked="false"
         android:layout_below="@+id/button5"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_marginTop="60dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Inspection Date"
         android:id="@+id/button5"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="103dp" />
+        android:onClick="setDate"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter New Violation"
-        android:id="@+id/button6"
-        android:layout_below="@+id/checkBox"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:text="date_selected"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Enter New Violation"-->
+        <!--android:id="@+id/button6"-->
+        <!--android:layout_marginTop="70dp"-->
+        <!--android:layout_below="@+id/checkBox"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:id="@+id/spinner2"
-        android:layout_below="@+id/button6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="73dp"
+        android:layout_below="@+id/checkBox"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="95dp"
         android:text="Continue Inspection"
         android:id="@+id/button7"
-        android:layout_marginTop="27dp"
-        android:layout_below="@+id/spinner2"
-        android:layout_alignLeft="@+id/button6"
-        android:layout_alignStart="@+id/button6"
         android:nestedScrollingEnabled="false"
-        android:onClick="buttonContinue2OnClick" />
+        android:onClick="buttonContinue2OnClick"
+        android:layout_below="@+id/spinner2"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
