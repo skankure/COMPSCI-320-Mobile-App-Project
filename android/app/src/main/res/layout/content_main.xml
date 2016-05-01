@@ -30,7 +30,8 @@
         android:id="@+id/button1"
         android:layout_marginBottom="40dp"
         android:layout_above="@+id/button2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="buttonPerformOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
         android:id="@+id/button2"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1" />
+        android:layout_alignStart="@+id/button1"
+        android:onClick="buttonSearchInspections" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,7 +50,8 @@
         android:id="@+id/button3"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="buttonViewMACode" />
 
     <Button
         android:layout_width="wrap_content"
@@ -57,5 +60,6 @@
         android:id="@+id/button4"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="buttonViewFederalCode" />
 </RelativeLayout>
