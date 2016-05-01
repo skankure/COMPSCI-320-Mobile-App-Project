@@ -53,6 +53,7 @@ CREATE TABLE picture (
 
 -- User
 CREATE TABLE user (
+  userid	  INTEGER PRIMARY KEY,
   user        VARCHAR(30),
   pass        BINARY(64), -- Stores hash of password
   name        VARCHAR(70),
