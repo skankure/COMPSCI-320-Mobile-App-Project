@@ -13,6 +13,7 @@ Green Team HIMA Application
 This repository represents the code for the semester long project for the course CS 320 Software Engineering at Umass Amherst.
 > "In this course, students learn and gain practical experience with software engineering principles and techniques. The practical experience centers on a semester-long team project in which a software development project is carried through all the stages of the software life cycle. Topics in this course include requirements analysis, specification, design, abstraction, programming style, testing, maintenance, communication, teamwork, and software project management. Particular emphasis is placed on communication and negotiation skills and on designing and developing maintainable software".
 
+The code is a representation of the work we were able to complete in 3 weeks to build a prototype. 
 
 
 ##Product Overview:
@@ -25,9 +26,9 @@ android application onto the tablet. The health inspector uses the android appli
 ##Installation:
 To Install:
 
-1. Android application currently has no local database, all methods are using mock data
-2. Android application UI needs to be fixed to look more professional
-3. Desktop java gui application needs PDF generator method
+1. todo
+2. todo
+3. todo
 
 
 
