@@ -23,10 +23,13 @@ desktop. Our system works the following way. The health inspector receives a tab
 android application onto the tablet. The health inspector uses the android application to either create a new inspection, or update a previous inspection, and print this inspection using a portable bluetooth printer. Then the inspector can connect the tablet via usb to his desktop, and sync the inspections to the desktop application. From the desktop application, the health inspector can view past inspections, and download them as pdfs.
 
 ##Installation:
-To Istall:
-1. todo
-2. todo
-3. todo
+To Install:
+
+1. Android application currently has no local database, all methods are using mock data
+2. Android application UI needs to be fixed to look more professional
+3. Desktop java gui application needs PDF generator method
+
+
 
 ##Architecture:
 The architecture is as followed. Our code is organized into two categories: android and desktop. The android folder contains all code that allows the android application to run. We have used android studio to create our application. Currently the data is hardcoded into the application, and eventually will be replaced with a local SQLlite database. The desktop category refers to the code that creates the desktop application, and database that the desktop application is using. The database is coded in SQLite while, the desktop application is a java gui.
