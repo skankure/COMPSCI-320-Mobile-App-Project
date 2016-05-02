@@ -10,10 +10,11 @@ Green Team HIMA Application
 - Jianyi Huang
 
 ##Background Information:
-This repository represents the code for the semester long project for the course CS 320 Software Engineering at Umass Amherst.
-> "In this course, students learn and gain practical experience with software engineering principles and techniques. The practical experience centers on a semester-long team project in which a software development project is carried through all the stages of the software life cycle. Topics in this course include requirements analysis, specification, design, abstraction, programming style, testing, maintenance, communication, teamwork, and software project management. Particular emphasis is placed on communication and negotiation skills and on designing and developing maintainable software".
 
-The code is a representation of the work we were able to complete in 3 weeks to build a prototype. 
+This repository represents the code for the semester long project for the course CS 320 Software Engineering at Umass Amherst.
+The code is a representation of the work we were able to complete in 3 weeks to build a prototype.
+
+> "In this course, students learn and gain practical experience with software engineering principles and techniques. The practical experience centers on a semester-long team project in which a software development project is carried through all the stages of the software life cycle. Topics in this course include requirements analysis, specification, design, abstraction, programming style, testing, maintenance, communication, teamwork, and software project management. Particular emphasis is placed on communication and negotiation skills and on designing and developing maintainable software".
 
 
 ##Product Overview:
@@ -62,5 +63,6 @@ The following are issues that are currently pending in our application:
  6. Syncing currently does not work. Research needs to be done on how to set up this part of the application
  7.  Remote Printing has not been set up or tested.
  8. Federal and state food codes are not parsed from PDFs and placed in a searchable database
+
 
  For the future we would like to fix all the existing issues to make the project work how it should. In the future we would like to make more advanced search functions both on the tablet and desktop to make it easier for the health inspector to search for records.
