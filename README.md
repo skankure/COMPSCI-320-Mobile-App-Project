@@ -10,8 +10,10 @@ Green Team HIMA Application
 - Jianyi Huang
 
 ##Background Information:
-This repository represents the code for the semester long project for the course CS 320 Software Engineering at Umass Amherst. 
-> In this course, students learn and gain practical experience with software engineering principles and techniques. The practical experience centers on a semester-long team project in which a software development project is carried through all the stages of the software life cycle. Topics in this course include requirements analysis, specification, design, abstraction, programming style, testing, maintenance, communication, teamwork, and software project management. Particular emphasis is placed on communication and negotiation skills and on designing and developing maintainable software.
+This repository represents the code for the semester long project for the course CS 320 Software Engineering at Umass Amherst.
+> "In this course, students learn and gain practical experience with software engineering principles and techniques. The practical experience centers on a semester-long team project in which a software development project is carried through all the stages of the software life cycle. Topics in this course include requirements analysis, specification, design, abstraction, programming style, testing, maintenance, communication, teamwork, and software project management. Particular emphasis is placed on communication and negotiation skills and on designing and developing maintainable software".
+
+
 
 ##Product Overview:
 Our software engineering project was to create a system that would allow a health inspector to conduct and perform health inspections
@@ -21,7 +23,10 @@ desktop. Our system works the following way. The health inspector receives a tab
 android application onto the tablet. The health inspector uses the android application to either create a new inspection, or update a previous inspection, and print this inspection using a portable bluetooth printer. Then the inspector can connect the tablet via usb to his desktop, and sync the inspections to the desktop application. From the desktop application, the health inspector can view past inspections, and download them as pdfs.
 
 ##Installation:
-lorem ipsum
+To Istall:
+1. todo
+2. todo
+3. todo
 
 ##Architecture:
 The architecture is as followed. Our code is organized into two categories: android and desktop. The android folder contains all code that allows the android application to run. We have used android studio to create our application. Currently the data is hardcoded into the application, and eventually will be replaced with a local SQLlite database. The desktop category refers to the code that creates the desktop application, and database that the desktop application is using. The database is coded in SQLite while, the desktop application is a java gui.
