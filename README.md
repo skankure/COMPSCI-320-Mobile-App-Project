@@ -9,8 +9,10 @@ Green Team HIMA Application
 - Pandi Rrapo
 - Jianyi Huang
 
-
 ##Background Information:
+lorem ipsum
+
+##Product Overview:
 Our software engineering project was to create a system that would allow a health inspector to conduct and perform health inspections
 for food establishments efficiently and digitally. Currently, the health inspector manually inputs data from health inspections on paper,
 and would like a system where he can perform inspections via tablet, be able to print inspections real time, and view inspection data via
@@ -49,3 +51,6 @@ The following are issues that are currently pending in our application:
  5. Desktop java gui needs minor style changes
  6. Syncing currently does not work. Research needs to be done on how to set up this part of the application
  7.  Remote Printing has not been set up or tested.
+ 8. Federal and state food codes are not parsed from PDFs and placed in a searchable database
+
+ For the future we would like to fix all the existing issues to make the project work how it should. In the future we would like to make more advanced search functions both on the tablet and desktop to make it easier for the health inspector to search for records.
