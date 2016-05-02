@@ -37,7 +37,15 @@ The android application works the following way. The android application consist
 The desktop application works the following way. The desktop application is installed on the health inspectors computer. The health inspector must login in with the correct credentials (user name is Steve, and password is foods). Once the health inspector is logged in, he can search past inspections, or sync his tablet to the desktop to retrieve inspections stored on the tablet that have not been updated to the desktop database.
 
 ##Database:
-Currently there is a database set up for the java gui desktop application. The database is coded in SQL Lite. This database is connected to the java gui application as of right now. 
+Currently there is a database set up for the java gui desktop application. The database is coded in SQL Lite. This database is connected to the java gui application as of right now.
 
 ##Existing Issues and Future Functionality:
-lorem ipsum
+The following are issues that are currently pending in our application:
+
+ 1. Android application currently has no local database, all methods are using mock data
+ 2. Android application UI needs to be fixed to look more professional
+ 3. Desktop java gui application needs PDF generator method
+ 4. Desktop java gui needs authentication
+ 5. Desktop java gui needs minor style changes
+ 6. Syncing currently does not work. Research needs to be done on how to set up this part of the application
+ 7.  Remote Printing has not been set up or tested.
