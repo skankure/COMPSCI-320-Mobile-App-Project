@@ -28,6 +28,15 @@ The android application works the following way. The android application consist
 3. View MA Food Codes
 4. View Federal Food Codes
 
+- No problems exist
+- You made it all up
+ 1. You probably missing something big
+     - That isn't really important though
+     - I don't mean to pry
+ 2. You might have just not indented enough times
+     - That seems more likely
+- This helps, right?
+
 
 ##Desktop Application:
 lorem ipsum
