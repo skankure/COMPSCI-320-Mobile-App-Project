@@ -22,7 +22,11 @@ The architecture is as followed. Our code is organized into two categories: andr
 
 
 ##Android Application:
-lorem ipsum
+The android application works the following way. The android application consists of a home screen where the health inspector can do the following:
+1. Create inspection
+2. Search inspection
+3. View MA Food Codes
+4. View Federal Food Codes
 
 
 ##Desktop Application:
