@@ -231,8 +231,8 @@ public class GUI {
 		landingFrame.add(btnLandingLogout);
 		
 		JLabel lblEstablishment = new JLabel("Restaurant");
-		lblEstablishment.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblEstablishment.setBounds(59, 27, 443, 59);
+		lblEstablishment.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		lblEstablishment.setBounds(59, 46, 245, 68);
 		searchFrame.add(lblEstablishment);
 		
 		JButton btnSearchSearch = new JButton("Search");
@@ -292,67 +292,68 @@ public class GUI {
 			}
 		});
 		btnSearchSearch.setFont(new Font("Tahoma", Font.PLAIN, 44));
-		btnSearchSearch.setBounds(345, 854, 727, 73);
+		btnSearchSearch.setBounds(351, 884, 722, 59);
 		searchFrame.add(btnSearchSearch);
 		
 		chckbxCritical = new JCheckBox("Reinspection Required");
 		chckbxCritical.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		chckbxCritical.setBounds(1112, 854, 549, 73);
+		chckbxCritical.setBounds(1111, 885, 549, 59);
 		searchFrame.add(chckbxCritical);
 		
 		JLabel lblDate = new JLabel("Date");
-		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblDate.setBounds(59, 285, 443, 59);
+		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		lblDate.setBounds(68, 464, 194, 69);
 		searchFrame.add(lblDate);
 		
 		JLabel lblViolation = new JLabel("Violation");
-		lblViolation.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblViolation.setBounds(1383, 561, 443, 59);
+		lblViolation.setFont(new Font("Tahoma", Font.PLAIN, 44));
+		lblViolation.setBounds(1039, 464, 234, 68);
 		searchFrame.add(lblViolation);
 		
 		JLabel lblInspector = new JLabel("Inspector");
 		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 44));
-		lblInspector.setBounds(1162, 46, 234, 68);
+		lblInspector.setBounds(1039, 46, 234, 68);
 		searchFrame.add(lblInspector);
 		
 		textFieldEstablishment = new JTextField();
-		textFieldEstablishment.setBounds(179, 270, 278, 22);
+		textFieldEstablishment.setBounds(169, 406, 673, 45);
 		searchFrame.add(textFieldEstablishment);
 		textFieldEstablishment.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Find:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel.setBounds(79, 270, 88, 22);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel.setBounds(56, 403, 101, 48);
 		searchFrame.add(lblNewLabel);
 		
 		textFieldDate = new JTextField();
 		textFieldDate.setColumns(10);
-		textFieldDate.setBounds(182, 528, 278, 22);
+		textFieldDate.setBounds(158, 825, 673, 45);
 		searchFrame.add(textFieldDate);
 		
 		JLabel label_1 = new JLabel("Find:");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_1.setBounds(82, 528, 88, 22);
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		label_1.setBounds(59, 825, 101, 45);
 		searchFrame.add(label_1);
 		
 		textFieldInspector = new JTextField();
+		textFieldInspector.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		textFieldInspector.setColumns(10);
-		textFieldInspector.setBounds(1549, 525, 278, 22);
+		textFieldInspector.setBounds(1139, 401, 683, 45);
 		searchFrame.add(textFieldInspector);
 		
 		JLabel label_2 = new JLabel("Find:");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_2.setBounds(1449, 525, 88, 22);
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		label_2.setBounds(1039, 400, 125, 45);
 		searchFrame.add(label_2);
 		
 		textFieldViolation = new JTextField();
 		textFieldViolation.setColumns(10);
-		textFieldViolation.setBounds(1493, 804, 278, 22);
+		textFieldViolation.setBounds(1139, 816, 683, 45);
 		searchFrame.add(textFieldViolation);
 		
 		JLabel label_3 = new JLabel("Find:");
-		label_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_3.setBounds(1393, 804, 88, 22);
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		label_3.setBounds(1039, 818, 88, 38);
 		searchFrame.add(label_3);
 		
 		JButton btnSearchReturn = new JButton("Main Menu");
@@ -369,28 +370,28 @@ public class GUI {
 		searchFrame.add(btnSearchReturn);
 		
 		scrollPaneEstablishment = new JScrollPane();
-		scrollPaneEstablishment.setBounds(69, 99, 391, 158);
+		scrollPaneEstablishment.setBounds(59, 127, 783, 261);
 		searchFrame.add(scrollPaneEstablishment);
 		
 		tableEstablishment = new JTable();
 		scrollPaneEstablishment.setViewportView(tableEstablishment);
 		
 		scrollPaneInspector = new JScrollPane();
-		scrollPaneInspector.setBounds(1162, 127, 660, 385);
+		scrollPaneInspector.setBounds(1039, 127, 783, 260);
 		searchFrame.add(scrollPaneInspector);
 		
 		tableInspector = new JTable();
 		scrollPaneInspector.setViewportView(tableInspector);
 		
 		scrollPaneDate = new JScrollPane();
-		scrollPaneDate.setBounds(69, 357, 388, 158);
+		scrollPaneDate.setBounds(69, 545, 762, 261);
 		searchFrame.add(scrollPaneDate);
 		
 		tableDate = new JTable();
 		scrollPaneDate.setViewportView(tableDate);
 		
 		scrollPaneViolation = new JScrollPane();
-		scrollPaneViolation.setBounds(1383, 633, 399, 158);
+		scrollPaneViolation.setBounds(1039, 545, 783, 260);
 		searchFrame.add(scrollPaneViolation);
 		
 		tableViolation = new JTable();
@@ -408,7 +409,7 @@ public class GUI {
 			}
 		});
 		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 44));
-		btnClear.setBounds(12, 854, 306, 73);
+		btnClear.setBounds(12, 884, 306, 59);
 		searchFrame.add(btnClear);
 		
 		
@@ -475,12 +476,13 @@ public class GUI {
 		syncFrame.add(btnSyncCancel);
 		
 		JLabel lblResults = new JLabel("Results");
-		lblResults.setFont(new Font("Dialog", Font.PLAIN, 70));
-		lblResults.setBounds(365, 33, 269, 123);
+		lblResults.setFont(new Font("Dialog", Font.PLAIN, 82));
+		lblResults.setBounds(792, 13, 330, 142);
 		resultsFrame.add(lblResults);
 		
-		JLabel lblResultsMatching = new JLabel("6 results matching searched criteria:");
-		lblResultsMatching.setBounds(375, 144, 222, 27);
+		JLabel lblResultsMatching = new JLabel("Results matching searched criteria:");
+		lblResultsMatching.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblResultsMatching.setBounds(706, 164, 504, 62);
 		resultsFrame.add(lblResultsMatching);
 		
 		JButton btnResultsReturn = new JButton("Return");
@@ -539,43 +541,21 @@ public class GUI {
 			}
 		});
 		btnResultsReturn.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		btnResultsReturn.setBounds(365, 609, 269, 54);
+		btnResultsReturn.setBounds(766, 822, 362, 102);
 		resultsFrame.add(btnResultsReturn);
 		
 		JButton btnDownloadPdf = new JButton("Download PDF");
-		btnDownloadPdf.setBounds(794, 233, 131, 25);
+		btnDownloadPdf.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		btnDownloadPdf.setBounds(1564, 252, 275, 62);
 		resultsFrame.add(btnDownloadPdf);
 		
-		JButton button = new JButton("Download PDF");
-		button.setBounds(794, 271, 131, 25);
-		resultsFrame.add(button);
-		
-		JButton button_1 = new JButton("Download PDF");
-		button_1.setBounds(794, 309, 131, 25);
-		resultsFrame.add(button_1);
-		
-		JButton button_2 = new JButton("Download PDF");
-		button_2.setBounds(794, 347, 131, 25);
-		resultsFrame.add(button_2);
-		
 		JButton btnEmail1 = new JButton("Email");
-		btnEmail1.setBounds(937, 233, 73, 25);
+		btnEmail1.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		btnEmail1.setBounds(1564, 339, 275, 62);
 		resultsFrame.add(btnEmail1);
 		
-		JButton buttonEmail2 = new JButton("Email");
-		buttonEmail2.setBounds(937, 271, 73, 25);
-		resultsFrame.add(buttonEmail2);
-		
-		JButton buttonEmail3 = new JButton("Email");
-		buttonEmail3.setBounds(937, 309, 73, 25);
-		resultsFrame.add(buttonEmail3);
-		
-		JButton buttonEmail4 = new JButton("Email");
-		buttonEmail4.setBounds(937, 347, 73, 25);
-		resultsFrame.add(buttonEmail4);
-		
 		scrollPaneResults = new JScrollPane();
-		scrollPaneResults.setBounds(56, 194, 726, 402);
+		scrollPaneResults.setBounds(393, 252, 1100, 519);
 		resultsFrame.add(scrollPaneResults);
 		
 		tableResults = new JTable();
